@@ -1,0 +1,22 @@
+before_script:
+
+stages:
+  - test
+
+test:
+  stage: test
+  script:
+    - export ENV=Development
+    - rm -r /var/www
+    - ln -s /builds/efis/collmexBundle /var/www
+    - cd /var/www
+    - wget http://getcomposer.org/composer.phar -O composer.phar
+    - php -dmemory_limit=2G composer.phar install --optimize-autoloader
+    - php app/console assetic:dump --env=dev
+    - php app/console cache:clear --env=dev
+    - php app/console assets:install web --symlink
+    - chown -R www-data:root /var/www
+    - ./bin/phpunit -c app --coverage-text --colors=never
+  allow_failure: false
+  tags:
+    - docker-runner
