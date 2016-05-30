@@ -73,7 +73,7 @@ class Product extends CollmexObject
 
     protected $extraInfo;
 
-    protected function setField($key, $value)
+    public function setField($key, $value)
     {
         $this->template[$key] = $value;
 
