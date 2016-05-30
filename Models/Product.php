@@ -2,8 +2,7 @@
 
 namespace CoffeeBike\CollmexBundle\Models;
 
-
-class Product
+class Product extends CollmexObject
 {
     protected $template = array(
         'type_identifier' => 'CMXPRD',
@@ -74,35 +73,13 @@ class Product
 
     protected $extraInfo;
 
-
-    public function setData($aTemplate)
-    {
-        $i = 0;
-        foreach ($this->template as $key => $value) {
-            $this->template[$key] = $aTemplate[$i];
-            $i++;
-        }
-        
-        $this->parseRemark();
-    }
-
-    public function getData()
-    {
-        return $this->template;
-    }
-
-    public function setField($key, $value)
+    protected function setField($key, $value)
     {
         $this->template[$key] = $value;
-        
+
         if ($key == 'remark') {
             $this->parseRemark();
         }
-    }
-
-    public function getField($key)
-    {
-        return $this->template[$key];
     }
 
     public function getExtraInfo()
@@ -117,7 +94,7 @@ class Product
         $value = null;
 
         preg_match_all("/(\[)(.*?)(\])/", $remark, $aMatches);
-        
+
         foreach ($aMatches[2] as $match) {
             $parameters = explode('=', $match);
             $key = $parameters[0];

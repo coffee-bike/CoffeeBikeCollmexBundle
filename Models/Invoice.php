@@ -2,9 +2,7 @@
 
 namespace CoffeeBike\CollmexBundle\Models;
 
-
-
-class Invoice
+class Invoice extends CollmexObject
 {
     const INVOICE_TYPE_INVOICE            = 0;
     const INVOICE_TYPE_CREDIT_MEMO        = 1;
@@ -130,29 +128,4 @@ class Invoice
         'margin'                         => null,
         'costs_manual'                   => null,
     );
-
-    /**
-     * Formally validates the type data in $data attribute.
-     *
-     * @return bool Validation success
-     */
-    public function validate()
-    {
-        // TODO: Implement validate() method.
-    }
-
-    public function setInvoiceData($aTemplate)
-    {
-        $i = 0;
-        foreach ($this->template as $key => $value) {
-            $this->template[$key] = $aTemplate[$i];
-            $i++;
-
-        }
-    }
-    
-    public function getData()
-    {
-        return $this->template;
-    }
 }

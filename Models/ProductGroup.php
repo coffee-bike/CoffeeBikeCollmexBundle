@@ -3,7 +3,7 @@
 namespace CoffeeBike\CollmexBundle\Models;
 
 
-class ProductGroup
+class ProductGroup extends CollmexObject
 {
     protected $template = array(
         'type_identifier' => 'PRDGRP',
@@ -12,30 +12,4 @@ class ProductGroup
         'is_subgroup_from_id' => null,
 
     );
-
-
-    public function setData($aTemplate)
-    {
-        $i = 0;
-        foreach ($this->template as $key => $value) {
-            $this->template[$key] = $aTemplate[$i];
-            $i++;
-        }
-    }
-
-    public function getData($key)
-    {
-        return $this->template[$key];
-    }
-
-    public function setField($key, $value)
-    {
-        $this->template[$key] = $value;
-    }
-
-    public function getField($key)
-    {
-        return $this->template[$key];
-    }
-
 }
