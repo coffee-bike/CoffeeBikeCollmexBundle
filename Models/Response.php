@@ -19,11 +19,20 @@ class Response
         switch ($aData[0]) {
             case 'CMXPRD':
                 $object = new Product();
-                break;                
+                break;
+            case 'CMXINV':
+                $object = new Invoice();
+                break;
+            case 'PRDGRP':
+                $object = new ProductGroup();
+                break;
+            default:
+                die('Entity not mapped in CollmexBundle!');
+                
         }
 
         $object->setData($aData);
-        
+
         $this->objects[] = $object;
     }
 
