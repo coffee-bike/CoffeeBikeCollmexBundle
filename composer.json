@@ -24,7 +24,8 @@
     },
     "require-dev": {
         "symfony/console": "~2.3|~3.0",
-        "symfony/phpunit-bridge": "~2.7|~3.0"
+        "symfony/phpunit-bridge": "~2.7|~3.0",
+        "phpunit/phpunit": "4.8.*"
     },
     "config": {
         "platform": {
