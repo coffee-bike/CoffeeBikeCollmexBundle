@@ -36,17 +36,17 @@ class CollmexObject
 
     public function getData()
     {
-        return $this->template;
+        return $this;
     }
 
     public function setField($key, $value)
     {
-        $this->template[$key] = $value;
+        $this->$key = $value;
     }
 
     public function getField($key)
     {
-        return $this->template[$key];
+        return $this->$key;
     }
 
 }

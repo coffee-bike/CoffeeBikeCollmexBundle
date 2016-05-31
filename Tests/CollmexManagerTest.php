@@ -4,6 +4,7 @@ namespace CoffeeBike\CollmexBundle\Tests\Services;
 
 use CoffeeBike\CollmexBundle\Models\Invoice;
 use CoffeeBike\CollmexBundle\Models\Product;
+use CoffeeBike\CollmexBundle\Models\ProductGroup;
 use CoffeeBike\CollmexBundle\Models\Request;
 use CoffeeBike\CollmexBundle\Models\Response;
 use CoffeeBike\CollmexBundle\Services\CollmexManager;
@@ -79,6 +80,8 @@ class CollmexManagerTest extends \PHPUnit_Framework_TestCase
     {
         $groups = $this->cm->getProductGroups();
 
+        $this->assertNotNull($groups);
+
     }
 
     public function testSetData()
@@ -92,9 +95,16 @@ class CollmexManagerTest extends \PHPUnit_Framework_TestCase
             null,
         );
 
-        print_r($aData);
-
         $response->addObject($aData);
+    }
+
+    public function testCollmexObject()
+    {
+        $group = new ProductGroup();
+
+        $group->setField('name', 'Test');
+
+        $this->assertEquals('Test', $group->getField('name'));
     }
 
     /*
