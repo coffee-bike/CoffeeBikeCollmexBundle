@@ -28,10 +28,9 @@ class CollmexObject
     public function setData($aTemplate)
     {
         $i = 0;
-        foreach ($this->template as $key => $value) {
-            $this->template[$key] = $aTemplate[$i];
+        foreach ($this as $key => $value) {
+            $this->$key = $aTemplate[$i];
             $i++;
-
         }
     }
 
