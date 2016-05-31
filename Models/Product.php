@@ -90,17 +90,12 @@ class Product extends CollmexObject
     public function parseRemark()
     {
         $remark = $this->getField('remark');
-        $key = null;
-        $value = null;
 
         preg_match_all("/(\[)(.*?)(\])/", $remark, $aMatches);
 
         foreach ($aMatches[2] as $match) {
             $parameters = explode('=', $match);
-            $key = $parameters[0];
-            $value = $parameters[1];
+            $this->extraInfo[$parameters[0]] = $parameters[1];
         }
-
-        $this->extraInfo[$key] = $value;
     }
 }
