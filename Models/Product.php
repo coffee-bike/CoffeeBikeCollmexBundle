@@ -4,74 +4,74 @@ namespace CoffeeBike\CollmexBundle\Models;
 
 class Product extends CollmexObject
 {
-    protected $template = array(
-        'type_identifier' => 'CMXPRD',
-        'product_id' => null,
-        'product_name' => null,
-        'product_name_en' => null,
-        'base_unit_measure' => null,
-        'product_group' => null,
-        'company' => null,
-        'tax_classification' => null,
-        'weight' => null,
-        'weight_base_unit' => null,
-        'price_quotation' => null,
-        'product_type' => null,
-        'inactive' => null,
-        'price_group' => null,
-        'retail_price' => null,
-        'ean' => null,
-        'manufacturer' => null,
-        'shipping_group' => null,
-        'minimum_stock ' => null,
-        'order_volume' => null,
-        'batch_management_requirement' => null,
-        'procurement' => null,
-        'production_time' => null,
-        'wage_costs' => null,
-        'wage_costs_reference_amount' => null,
-        'remark' => null,
-        'cost_determination' => null,
-        'cost' => null,
-        'cost_reference_amount' => null,
-        'supplier' => null,
-        'supplier_tax_classification' => null,
-        'supplier_product_id' => null,
-        'supplier_package_unit' => null,
-        'supplier_designation' => null,
-        'supplier_price' => null,
-        'supplier_price_amount' => null,
-        'supplier_delivery_time' => null,
-        'supplier_currency' => null,
-        'reserved1' => null,
-        'reserved2' => null,
-        'website_no' => null,
-        'shop_shorttext' => null,
-        'shop_fulltext' => null,
-        'text_html' => null,
-        'filename' => null,
-        'keywords' => null,
-        'title' => null,
-        'different_template' => null,
-        'picture_url' => null,
-        'basic_price_amount_1' => null,
-        'basic_price_amount_2' => null,
-        'basic_unit' => null,
-        'requested_price' => null,
-        'inactive_product' => null,
-        'shop_category' => null,
-        'reserved3' => null,
-        'reserved4' => null,
-        'reserved5' => null,
-        'manufacturer_product_id' => null,
-        'delivery_relevance' => null,
-        'amazon_asin' => null,
-        'ebay_article_id' => null,
-        'direct_delivery' => null,
-        'goods_number' => null,
-    );
 
-    protected $extraInfo;
+        protected $type_identifier ='CMXPRD';
+        protected $product_id;
+        protected $product_name;
+        protected $product_name_en;
+        protected $base_unit_measure;
+        protected $product_group;
+        protected $company;
+        protected $tax_classification;
+        protected $weight;
+        protected $weight_base_unit;
+        protected $price_quotation;
+        protected $product_type;
+        protected $inactive;
+        protected $price_group;
+        protected $retail_price;
+        protected $ean;
+        protected $manufacturer;
+        protected $shipping_group;
+        protected $minimum_stock ;
+        protected $order_volume;
+        protected $batch_management_requirement;
+        protected $procurement;
+        protected $production_time;
+        protected $wage_costs;
+        protected $wage_costs_reference_amount;
+        protected $remark;
+        protected $cost_determination;
+        protected $cost;
+        protected $cost_reference_amount;
+        protected $supplier;
+        protected $supplier_tax_classification;
+        protected $supplier_product_id;
+        protected $supplier_package_unit;
+        protected $supplier_designation;
+        protected $supplier_price;
+        protected $supplier_price_amount;
+        protected $supplier_delivery_time;
+        protected $supplier_currency;
+        protected $reserved1;
+        protected $reserved2;
+        protected $website_no;
+        protected $shop_shorttext;
+        protected $shop_fulltext;
+        protected $text_html;
+        protected $filename;
+        protected $keywords;
+        protected $title;
+        protected $different_template;
+        protected $picture_url;
+        protected $basic_price_amount_1;
+        protected $basic_price_amount_2;
+        protected $basic_unit;
+        protected $requested_price;
+        protected $inactive_product;
+        protected $shop_category;
+        protected $reserved3;
+        protected $reserved4;
+        protected $reserved5;
+        protected $manufacturer_product_id;
+        protected $delivery_relevance;
+        protected $amazon_asin;
+        protected $ebay_article_id;
+        protected $direct_delivery;
+        protected $goods_number;
+        protected $extraInfo;
+
+
 
     public function setField($key, $value)
     {
