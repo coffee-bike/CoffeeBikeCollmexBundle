@@ -29,7 +29,7 @@ class CollmexObject
     {
         $i = 0;
         foreach ($this as $key => $value) {
-            if ($key != 'extraInfo') {
+            if ($key != 'extraInfo' && $key != 'id') {
                 $this->$key = $aTemplate[$i];
                 $i++;
             }
