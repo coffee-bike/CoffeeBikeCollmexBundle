@@ -10,7 +10,7 @@
  * @author Jonas Dambacher <jonas.dambacher@coffee-bike.com>
  */
 
-namespace CoffeeBike\CollmexBundle\Models;
+namespace CoffeeBike\CollmexBundle\Entity;
 
 
 class ResponseMessage

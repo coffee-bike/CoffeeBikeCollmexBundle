@@ -6,7 +6,7 @@
  * Time: 16:51
  */
 
-namespace CoffeeBike\CollmexBundle\Models;
+namespace CoffeeBike\CollmexBundle\Entity;
 
 
 class Response

@@ -1,6 +1,6 @@
 <?php
 
-namespace CoffeeBike\CollmexBundle\Models;
+namespace CoffeeBike\CollmexBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,7 +15,7 @@ class Product extends CollmexObject
      */
     protected $type_identifier ='CMXPRD';
     /**
-     * @Id
+     * @ORM\Id
      * @ORM\Column(type="string")
      */
     protected $product_id;

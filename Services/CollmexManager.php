@@ -2,12 +2,12 @@
 
 namespace CoffeeBike\CollmexBundle\Services;
 
-use CoffeeBike\CollmexBundle\Models\Request;
-use CoffeeBike\CollmexBundle\Models\Response;
-use CoffeeBike\CollmexBundle\Models\Invoice as Invoice;
-use CoffeeBike\CollmexBundle\Models\Product;
-use CoffeeBike\CollmexBundle\Models\ProductGroup;
-use CoffeeBike\CollmexBundle\Models\ResponseMessage;
+use CoffeeBike\CollmexBundle\Entity\Request;
+use CoffeeBike\CollmexBundle\Entity\Response;
+use CoffeeBike\CollmexBundle\Entity\Invoice;
+use CoffeeBike\CollmexBundle\Entity\Product;
+use CoffeeBike\CollmexBundle\Entity\ProductGroup;
+use CoffeeBike\CollmexBundle\Entity\ResponseMessage;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 

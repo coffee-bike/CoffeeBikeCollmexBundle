@@ -1,6 +1,6 @@
 <?php
 
-namespace CoffeeBike\CollmexBundle\Models;
+namespace CoffeeBike\CollmexBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

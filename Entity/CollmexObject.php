@@ -10,7 +10,7 @@
  * @author Jonas Dambacher <jonas.dambacher@coffee-bike.com>
  */
 
-namespace CoffeeBike\CollmexBundle\Models;
+namespace CoffeeBike\CollmexBundle\Entity;
 
 
 class CollmexObject
@@ -29,8 +29,10 @@ class CollmexObject
     {
         $i = 0;
         foreach ($this as $key => $value) {
-            $this->$key = $aTemplate[$i];
-            $i++;
+            if ($key != 'extraInfo') {
+                $this->$key = $aTemplate[$i];
+                $i++;
+            }
         }
     }
 
