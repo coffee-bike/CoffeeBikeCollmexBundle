@@ -115,7 +115,7 @@ class CollmexManager
         return utf8_decode($strCSV);
     }
 
-    public function getProduct($prodNo, $prodGroup = null, $priceGroup = null, $onlyModified = 0, $shopId = null, $onlyWithPrice = 0, $companyId = 1)
+    public function getProduct($prodNo = null, $prodGroup = null, $priceGroup = null, $onlyModified = 0, $shopId = null, $onlyWithPrice = 0, $companyId = 1)
     {
         $request = new Request([
             'PRODUCT_GET',
@@ -164,7 +164,7 @@ class CollmexManager
         return $response->getObjects();
     }
 
-    public function getInvoice($invoiceNo, $customerNo, $from = null, $to = null, $onlyIssued = 0, $onlyModified = 0, $onlyCreatedWithThisAPI = 0, $companyId = 1)
+    public function getInvoice($invoiceNo = null, $customerNo = null, $from = null, $to = null, $onlyIssued = 0, $onlyModified = 0, $onlyCreatedWithThisAPI = 0, $companyId = 1)
     {
         $request = new Request([
             'INVOICE_GET',
@@ -185,7 +185,7 @@ class CollmexManager
 
         return $response->getObjects()[0];
     }
-    
+
     public function getInvoices($customerNo = null, $from = null, $to = null, $onlyIssued = 0, $onlyModified = 0, $onlyCreatedWithThisAPI = 0, $companyId = 1)
     {
         $request = new Request([
@@ -208,7 +208,6 @@ class CollmexManager
         return $response->getObjects();
     }
 
-    
 
 
 }
