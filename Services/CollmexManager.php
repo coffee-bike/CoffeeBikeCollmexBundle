@@ -185,7 +185,7 @@ class CollmexManager
 
         return $response->getObjects()[0];
     }
-
+    
     public function getInvoices($customerNo = null, $from = null, $to = null, $onlyIssued = 0, $onlyModified = 0, $onlyCreatedWithThisAPI = 0, $companyId = 1)
     {
         $request = new Request([
@@ -208,6 +208,7 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    
 
 
 }

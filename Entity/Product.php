@@ -267,36 +267,24 @@ class Product extends CollmexObject
      * @ORM\Column(type="string")
      */
     protected $goods_number;
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $extraInfo;
-
-
-
-    public function setField($key, $value)
-    {
-        $this->template[$key] = $value;
-
-        if ($key == 'remark') {
-            $this->parseRemark();
-        }
-    }
+    
 
     public function getExtraInfo()
     {
-        return $this->extraInfo;
+        return $this->parseRemark();
     }
 
     public function parseRemark()
     {
         $remark = $this->getField('remark');
-
         preg_match_all("/(\[)(.*?)(\])/", $remark, $aMatches);
-
+        $array = array();
+        
         foreach ($aMatches[2] as $match) {
             $parameters = explode('=', $match);
-            $this->extraInfo[$parameters[0]] = $parameters[1];
+            $array[$parameters[0]] = $parameters[1];
         }
+        
+        return $array;
     }
 }

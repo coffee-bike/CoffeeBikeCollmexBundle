@@ -293,7 +293,7 @@ class Invoice extends CollmexObject
      */
     protected $position_type;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $product_id;
     /**
