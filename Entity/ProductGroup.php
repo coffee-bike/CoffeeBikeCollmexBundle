@@ -27,5 +27,5 @@ class ProductGroup extends CollmexObject
     /**
      * @ORM\Column(type="integer")
      */
-    protected $is_subgroup_from_id;
+    protected $is_subgroup_from_id = 0;
 }
