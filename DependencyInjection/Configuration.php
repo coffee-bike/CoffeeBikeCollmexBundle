@@ -20,9 +20,13 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('coffee_bike_collmex');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNote
+            ->children()
+                ->scalarNode('user')->end()
+                ->scalarNode('password')->end()
+                ->scalarNode('customer_id')->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }

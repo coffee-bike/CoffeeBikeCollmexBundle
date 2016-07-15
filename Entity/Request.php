@@ -15,8 +15,8 @@ namespace CoffeeBike\CollmexBundle\Entity;
 
 class Request
 {
-    private $data;
-    
+    private $data = array();
+
     public function __construct($data)
     {
         $this->data = $data;
@@ -26,7 +26,7 @@ class Request
     {
         $this->data = $data;
     }
-    
+
     public function getData()
     {
         return $this->data;

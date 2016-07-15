@@ -26,14 +26,17 @@ class Response
             case 'PRDGRP':
                 $object = new ProductGroup();
                 break;
+            case 'NEW_OBJECT_ID';
+                break;
             default:
                 die('Entity not mapped in CollmexBundle!');
-                
+
         }
 
-        $object->setData($aData);
-
-        $this->objects[] = $object;
+        if (isset($object)) {
+            $object->setData($aData);
+            $this->objects[] = $object;
+        }
     }
 
     public function getObjects()

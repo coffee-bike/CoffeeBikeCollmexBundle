@@ -38,7 +38,15 @@ class CollmexObject
 
     public function getData()
     {
-        return $this;
+        $data = array();
+
+        foreach ($this as $key => $value) {
+            if ($key != 'extraInfo' && $key != 'id') {
+                $data[$key] = $value;
+            }
+        }
+
+        return $data;
     }
 
     public function setField($key, $value)

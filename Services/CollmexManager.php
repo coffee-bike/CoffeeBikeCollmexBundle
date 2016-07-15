@@ -35,7 +35,7 @@ class CollmexManager
             "https://www.collmex.de/cgi-bin/cgi.exe?" . $this->credentials['customerId'] . ",0,data_exchange"
         );
         cURL_setopt($curl, CURLOPT_POST, 1);
-        cURL_setopt($curl, CURLOPT_POSTFIELDS, $this->prepareData($request));
+        cURL_setopt($curl, CURLOPT_POSTFIELDS, $this->prepareData($request->getData()));
         cURL_setopt($curl, CURLOPT_HTTPHEADER, Array("Content-Type: text/csv"));
         cURL_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         cURL_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -95,22 +95,25 @@ class CollmexManager
     {
         $strCSV = "LOGIN;" . $this->credentials['user'] . ";" . $this->credentials['password'] . "\n";
 
-        // TODO: Remove duplicated code!
         if (is_array($data)) {
-            foreach ($data as $obj) {
-                foreach ($obj->getData() as $field) {
+            if ($this->containsOnlyObjects($data)) {
+                foreach ($data as $obj) {
+                    foreach ($obj->getData() as $field) {
+                        $strCSV .= $field . ";";
+                    }
+                    $strCSV .= "\n";
+                }
+                $strCSV = substr($strCSV, 0, -2); // Delete \n from CSV
+            } else {
+                foreach ($data as $field) {
                     $strCSV .= $field . ";";
                 }
-                $strCSV .= "\n";
             }
         } else {
             foreach ($data->getData() as $field) {
                 $strCSV .= $field . ";";
             }
-            $strCSV .= "\n";
-        }
-
-        $strCSV = substr($strCSV, 0, -2); // Delete \n from CSV
+       }
 
         return utf8_decode($strCSV);
     }
@@ -185,7 +188,7 @@ class CollmexManager
 
         return $response->getObjects()[0];
     }
-    
+
     public function getInvoices($customerNo = null, $from = null, $to = null, $onlyIssued = 0, $onlyModified = 0, $onlyCreatedWithThisAPI = 0, $companyId = 1)
     {
         $request = new Request([
@@ -208,7 +211,17 @@ class CollmexManager
         return $response->getObjects();
     }
 
-    
+    private function containsOnlyObjects($data) {
+
+        foreach ($data as $element) {
+            if (is_object($element)) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+
 
 
 }

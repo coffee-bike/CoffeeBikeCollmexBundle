@@ -2,11 +2,11 @@
 
 namespace CoffeeBike\CollmexBundle\Tests\Services;
 
-use CoffeeBike\CollmexBundle\Models\Invoice;
-use CoffeeBike\CollmexBundle\Models\Product;
-use CoffeeBike\CollmexBundle\Models\ProductGroup;
-use CoffeeBike\CollmexBundle\Models\Request;
-use CoffeeBike\CollmexBundle\Models\Response;
+use CoffeeBike\CollmexBundle\Entity\Invoice;
+use CoffeeBike\CollmexBundle\Entity\Product;
+use CoffeeBike\CollmexBundle\Entity\ProductGroup;
+use CoffeeBike\CollmexBundle\Entity\Request;
+use CoffeeBike\CollmexBundle\Entity\Response;
 use CoffeeBike\CollmexBundle\Services\CollmexManager;
 
 class CollmexManagerTest extends \PHPUnit_Framework_TestCase
@@ -15,7 +15,7 @@ class CollmexManagerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->cm = new CollmexManager('USER', 'PASSWORD', 'CUSTOMERID');
+        $this->cm = new CollmexManager('USER', 'PASSWORD', '137944');
     }
 
     public function testPrepareData()
@@ -26,7 +26,7 @@ class CollmexManagerTest extends \PHPUnit_Framework_TestCase
             '1000',
         ]);
 
-        $data = $this->cm->prepareData($request);
+        $data = $this->cm->prepareData($request->getData());
 
         $this->assertContains('PRODUCT_GET;1;1000', $data);
     }
@@ -73,7 +73,7 @@ class CollmexManagerTest extends \PHPUnit_Framework_TestCase
         $product = $this->cm->getProduct(1000);
 
         $this->assertTrue($product instanceof Product);
-        $this->assertEquals('Coffee-Bike', $product->getField('product_name'));
+        $this->assertEquals('Test', $product->getField('product_name'));
     }
 
     public function testGetProductGroup()
@@ -107,79 +107,72 @@ class CollmexManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Test', $group->getField('name'));
     }
 
-    /*
+    public function testCreateInvoice()
+    {
+        $invoice = new Invoice();
+        $invoice->setField('invoice_id', '-1');
+        $invoice->setField('position', '1');
+        $invoice->setField('client_id', '1');
+        $invoice->setField('invoice_type', '0');
+        $invoice->setField('customer_id', '9999');
+        $invoice->setField('invoice_text', 'Text');
+        $invoice->setField('language', '0');
+        $invoice->setField('system_name', 'CoffeeBikeCollmexBundle');
+        $invoice->setField('status', '10');
+        $invoice->setField('position_type', '0');
+        $invoice->setField('product_id', '1000');
+        $invoice->setField('quantity', '1');
+        $invoice->setField('foreign_tax', '0');
+
+        $response = $this->cm->send(new Request($invoice));
+
+        $this->assertEquals('S', $response->getMessages()[0]->getStatus());
+        $this->assertEquals('Datenübertragung erfolgreich. Es wurden 1 Datensätze verarbeitet.', $response->getMessages()[0]->getText());
+    }
+
+    public function testCreateInvoices()
+    {
+        $invoice[0] = new Invoice();
+        $invoice[0]->setField('invoice_id', '-1');
+        $invoice[0]->setField('position', '1');
+        $invoice[0]->setField('client_id', '1');
+        $invoice[0]->setField('invoice_type', '0');
+        $invoice[0]->setField('customer_id', '9999');
+        $invoice[0]->setField('invoice_text', 'Text');
+        $invoice[0]->setField('language', '0');
+        $invoice[0]->setField('system_name', 'CoffeeBikeCollmexBundle');
+        $invoice[0]->setField('status', '10');
+        $invoice[0]->setField('position_type', '0');
+        $invoice[0]->setField('product_id', '1000');
+        $invoice[0]->setField('quantity', '1');
+        $invoice[0]->setField('foreign_tax', '0');
+
+        $invoice[1] = new Invoice();
+        $invoice[1]->setField('invoice_id', '-1');
+        $invoice[1]->setField('position', '2');
+        $invoice[1]->setField('client_id', '1');
+        $invoice[1]->setField('invoice_type', '0');
+        $invoice[1]->setField('customer_id', '9999');
+        $invoice[1]->setField('invoice_text', 'Text');
+        $invoice[1]->setField('language', '0');
+        $invoice[1]->setField('system_name', 'CoffeeBikeCollmexBundle');
+        $invoice[1]->setField('status', '10');
+        $invoice[1]->setField('position_type', '0');
+        $invoice[1]->setField('product_id', '1000');
+        $invoice[1]->setField('quantity', '1');
+        $invoice[1]->setField('foreign_tax', '0');
+
+        $response = $this->cm->send(new Request($invoice));
+
+        $this->assertEquals('S', $response->getMessages()[0]->getStatus());
+        $this->assertEquals('Datenübertragung erfolgreich. Es wurden 2 Datensätze verarbeitet.', $response->getMessages()[0]->getText());
+    }
+
     public function testGetInvoice()
     {
-        $testData = array(
-            'set_type' => 'INVOICE_GET',
-            'invoice_id' => null,
-            'client_id' => null,
-            'customer_id' => 10623,
-            'invoice_date_begin' => null,
-            'invoice_date_end' => null,
-            'only_sent' => null,
-            'format' => null,
-            'only_changed' => null,
-            'system_name' => null,
-            'system_generated' => null,
-            'no_stationery' => null,
-        );
+        $invoice = $this->cm->getInvoice(1);
 
-
-        $invoice = $this->cm->getInvoice($testData);
-        print_r($invoice);
+        $this->assertEquals('Test', $invoice->getField('product_description'));
     }
-
-    public function testProduct()
-    {
-        $product = $this->cm->getProducts();
-
-    }
-
-    public function testRequest()
-    {
-        $testType = new TestType();
-        $testType->template = array(
-            'CUSTOMER_GET',
-            '9999',
-            '1',
-        );
-
-        // CollmexResult object
-        $result = $this->cm->sendRequest([$testType]);
-
-        $this->assertEquals('MESSAGE', $result->get('type_identifier'));
-        $this->assertEquals('S', $result->get('status'));
-        $this->assertNotNull($result->get('code'));
-        $this->assertNotNull($result->get('text'));
-       // $this->assertTrue($result->get('line'));
-
-        //$this->assertEquals('Allgemeiner Geschäftspartner', $result->getResponse()[0]->get('name'));
-    }
-
-            /*
-            public function testCreateInvoice()
-            {
-                $invoice['marketing'] = new Invoice();
-                $invoice['marketing']->setInvoiceData(array(
-                    'invoice_id' => -1,
-                    'position' => null,
-                    'client_id' => 1,
-                    'customer_id' => 9999, //$sm->getCollmexId($monthlyReport->getStore()->getCompany()),
-                    'invoice_type' => 0,
-                    'invoice_text' => 'Test ÄÜÖß', //TODO: Invoice text
-                    'language' => 0, // TODO: Language
-                    'employee_id' => null,
-                    'system_name' => 'eFIS',
-                    'status' => 10,
-                    'position_type' => 0,
-                    'product_id' => 1, //$monthlyReport->getStore()->getCompany()->getCountry()->getProdNoMarketing(),
-                    'quantity' => 1,
-                    'foreign_tax' => 0,
-                ));
-
-                $result = $this->cm->sendRequest($invoice);
-            }
-    */
 
 }
