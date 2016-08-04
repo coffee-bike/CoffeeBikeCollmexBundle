@@ -20,7 +20,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('coffee_bike_collmex');
 
-        $rootNote
+        $rootNode
             ->children()
                 ->scalarNode('user')->end()
                 ->scalarNode('password')->end()

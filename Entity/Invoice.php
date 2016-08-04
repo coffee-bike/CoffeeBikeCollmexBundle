@@ -25,11 +25,11 @@ class Invoice extends CollmexObject
      */
     protected $invoice_id;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $position;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $invoice_type;
     /**
@@ -125,13 +125,13 @@ class Invoice extends CollmexObject
      */
     protected $customer_bank_name;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $customer_vat_id;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
-    protected $reserved;
+    protected $customer_private;
     /**
      * @ORM\Column(type="string")
      */
@@ -141,7 +141,7 @@ class Invoice extends CollmexObject
      */
     protected $price_date;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $terms_of_payment;
     /**
@@ -149,7 +149,7 @@ class Invoice extends CollmexObject
      */
     protected $currency;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $price_group;
     /**
@@ -157,7 +157,7 @@ class Invoice extends CollmexObject
      */
     protected $discount_id;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $discount_final;
     /**
@@ -165,23 +165,23 @@ class Invoice extends CollmexObject
      */
     protected $discount_reason;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected $invoice_text;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected $final_text;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected $annotation;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="boolean")
      */
     protected $deleted;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $language;
     /**
@@ -197,7 +197,7 @@ class Invoice extends CollmexObject
      */
     protected $system_name;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $status;
     /**
@@ -289,7 +289,7 @@ class Invoice extends CollmexObject
      */
     protected $delivery_email;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $position_type;
     /**
@@ -297,7 +297,7 @@ class Invoice extends CollmexObject
      */
     protected $product_id;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected $product_description;
     /**
@@ -325,27 +325,27 @@ class Invoice extends CollmexObject
      */
     protected $position_value;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $product_type;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $tax_rate;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="boolean")
      */
     protected $foreign_tax;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $customer_order_position;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $revenue_type;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     protected $sum_over_positions;
     /**
