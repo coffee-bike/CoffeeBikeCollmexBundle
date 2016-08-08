@@ -20,11 +20,11 @@ class Product extends CollmexObject
      */
     protected $product_id;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected $product_name;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected $product_name_en;
     /**
@@ -112,7 +112,7 @@ class Product extends CollmexObject
      */
     protected $wage_costs_reference_amount;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected $remark;
     /**
@@ -136,7 +136,7 @@ class Product extends CollmexObject
      */
     protected $supplier_tax_classification;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $supplier_product_id;
     /**
@@ -144,7 +144,7 @@ class Product extends CollmexObject
      */
     protected $supplier_package_unit;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected $supplier_designation;
     /**
@@ -176,11 +176,11 @@ class Product extends CollmexObject
      */
     protected $website_no;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected $shop_shorttext;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected $shop_fulltext;
     /**
@@ -244,7 +244,7 @@ class Product extends CollmexObject
      */
     protected $reserved5;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $manufacturer_product_id;
     /**
@@ -256,7 +256,7 @@ class Product extends CollmexObject
      */
     protected $amazon_asin;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $ebay_article_id;
     /**
@@ -267,7 +267,7 @@ class Product extends CollmexObject
      * @ORM\Column(type="string")
      */
     protected $goods_number;
-    
+
 
     public function getExtraInfo()
     {
@@ -279,12 +279,12 @@ class Product extends CollmexObject
         $remark = $this->getField('remark');
         preg_match_all("/(\[)(.*?)(\])/", $remark, $aMatches);
         $array = array();
-        
+
         foreach ($aMatches[2] as $match) {
             $parameters = explode('=', $match);
             $array[$parameters[0]] = $parameters[1];
         }
-        
+
         return $array;
     }
 }

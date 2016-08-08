@@ -33,7 +33,7 @@ class Invoice extends CollmexObject
      */
     protected $invoice_type;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $client_id;
     /**
@@ -141,7 +141,7 @@ class Invoice extends CollmexObject
      */
     protected $price_date;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $terms_of_payment;
     /**
@@ -149,7 +149,7 @@ class Invoice extends CollmexObject
      */
     protected $currency;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $price_group;
     /**
@@ -157,7 +157,7 @@ class Invoice extends CollmexObject
      */
     protected $discount_id;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $discount_final;
     /**
@@ -181,11 +181,11 @@ class Invoice extends CollmexObject
      */
     protected $deleted;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $language;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $employee_id;
     /**
@@ -197,7 +197,7 @@ class Invoice extends CollmexObject
      */
     protected $system_name;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $status;
     /**
@@ -209,7 +209,7 @@ class Invoice extends CollmexObject
      */
     protected $discount_final_2_reason;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $shipping_id;
     /**
@@ -325,11 +325,11 @@ class Invoice extends CollmexObject
      */
     protected $position_value;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $product_type;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $tax_rate;
     /**
@@ -345,7 +345,7 @@ class Invoice extends CollmexObject
      */
     protected $revenue_type;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $sum_over_positions;
     /**
