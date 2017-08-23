@@ -26,6 +26,9 @@ class Response
             case 'PRDGRP':
                 $object = new ProductGroup();
                 break;
+            case 'STOCK_AVAILABLE':
+                $object = new StockInfo();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
