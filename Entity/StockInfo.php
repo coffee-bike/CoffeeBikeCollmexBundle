@@ -13,7 +13,7 @@ class StockInfo extends CollmexObject
     /**
      * @ORM\Column(type="string")
      */
-    protected $type_identifier ='CMXPRD';
+    protected $type_identifier ='STOCK_AVAILABLE';
     /**
      * @ORM\Id
      * @ORM\Column(type="string")
@@ -39,13 +39,7 @@ class StockInfo extends CollmexObject
      * @ORM\Column(type="integer")
      */
     protected $reorder_time;
-
-
-
-    public function getExtraInfo()
-    {
-        return $this->parseRemark();
-    }
+    
 
     public function parseRemark()
     {

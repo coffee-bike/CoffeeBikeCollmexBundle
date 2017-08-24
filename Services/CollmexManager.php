@@ -167,7 +167,7 @@ class CollmexManager
         return $response->getObjects();
     }
 
-    public function getStockInfo($onlyModified = 0, $companyId = 1, $systemName = 'Shop')
+    public function getStockInfo($onlyModified = 0, $companyId = 1, $systemName = 'CoffeeBikeCollmexBundle')
     {
         $request = new Request([
             'STOCK_AVAILABLE_GET',
