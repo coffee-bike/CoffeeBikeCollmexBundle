@@ -194,7 +194,7 @@ class CollmexManager
 
         $response = $this->send($request);
 
-        return $response->getObjects()[2];
+        return $response->getObjects();
     }
 
     public function getInvoice($invoiceNo = null, $customerNo = null, $from = null, $to = null, $onlyIssued = 0, $onlyModified = 0, $onlyCreatedWithThisAPI = 0, $companyId = 1)
