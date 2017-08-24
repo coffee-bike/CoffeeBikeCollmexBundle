@@ -182,6 +182,21 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getProductStockInfo($productId, $onlyModified = 0, $companyId = 1, $systemName = 'CoffeeBikeCollmexBundle')
+    {
+        $request = new Request([
+            'STOCK_AVAILABLE_GET',
+            $companyId,
+            $productId,
+            $onlyModified,
+            $systemName,
+        ]);
+
+        $response = $this->send($request);
+
+        return $response->getObjects()[0];
+    }
+
     public function getInvoice($invoiceNo = null, $customerNo = null, $from = null, $to = null, $onlyIssued = 0, $onlyModified = 0, $onlyCreatedWithThisAPI = 0, $companyId = 1)
     {
         $request = new Request([
