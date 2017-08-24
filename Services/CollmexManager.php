@@ -113,7 +113,7 @@ class CollmexManager
             foreach ($data->getData() as $field) {
                 $strCSV .= $field . ";";
             }
-       }
+        }
 
         return utf8_decode($strCSV);
     }
@@ -160,6 +160,36 @@ class CollmexManager
             'eFIS',
             $shopId,
             $onlyWithPrice,
+        ]);
+
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getStockInfo($onlyModified = 0, $companyId = 1, $systemName = 'CoffeeBikeCollmexBundle')
+    {
+        $request = new Request([
+            'STOCK_AVAILABLE_GET',
+            $companyId,
+            '',
+            $onlyModified,
+            $systemName,
+        ]);
+
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getProductStockInfo($productId, $onlyModified = 0, $companyId = 1, $systemName = 'CoffeeBikeCollmexBundle')
+    {
+        $request = new Request([
+            'STOCK_AVAILABLE_GET',
+            $companyId,
+            $productId,
+            $onlyModified,
+            $systemName,
         ]);
 
         $response = $this->send($request);
