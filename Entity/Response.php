@@ -29,6 +29,9 @@ class Response
             case 'STOCK_AVAILABLE':
                 $object = new StockInfo();
                 break;
+            case 'CMXORD-2':
+                $object = new Order();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
