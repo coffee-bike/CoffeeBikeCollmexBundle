@@ -13,6 +13,7 @@ class Response
 {
     private $messages = array();
     private $objects = array();
+    private $newObjectIds = array();
 
     public function addObject($aData)
     {
@@ -31,8 +32,6 @@ class Response
                 break;
             case 'CMXORD-2':
                 $object = new Order();
-                break;
-            case 'NEW_OBJECT_ID';
                 break;
             default:
                 die('Entity not mapped in CollmexBundle!');
@@ -58,5 +57,15 @@ class Response
     public function getMessages()
     {
         return $this->messages;
+    }
+
+    public function addNewObjectId($newObjectId)
+    {
+        $this->newObjectIds[] = $newObjectId;
+    }
+
+    public function getNewObjectIds()
+    {
+        return $this->newObjectIds;
     }
 }
