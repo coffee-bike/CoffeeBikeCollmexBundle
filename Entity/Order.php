@@ -220,6 +220,14 @@ class Order extends CollmexObject
     /**
      * @ORM\Column(type="string")
      */
+    protected $voucher;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $cancelled_at;
+    /**
+     * @ORM\Column(type="string")
+     */
     protected $shipping_id;
     /**
      * @ORM\Column(type="string")
