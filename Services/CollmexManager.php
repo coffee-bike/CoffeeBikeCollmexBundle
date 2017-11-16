@@ -137,6 +137,20 @@ class CollmexManager
         return $response->getObjects()[0];
     }
 
+    public function getProductPrices($productId, $productGroup = null, $inactive = 1, $companyId=1)
+    {
+        $request = new Request([
+            'PRODUCT_PRICE_GET',
+            $companyId,
+            $productId,
+            $productGroup,
+            $inactive,
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getProductGroups()
     {
         $request = new Request([
