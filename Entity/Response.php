@@ -24,6 +24,9 @@ class Response
             case 'CMXINV':
                 $object = new Invoice();
                 break;
+            case 'CMXPRI':
+                $object = new ProductPrice();
+                break;
             case 'PRDGRP':
                 $object = new ProductGroup();
                 break;
