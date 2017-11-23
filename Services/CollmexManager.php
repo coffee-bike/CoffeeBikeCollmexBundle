@@ -137,7 +137,7 @@ class CollmexManager
         return $response->getObjects()[0];
     }
 
-    public function getProductPrices($productId, $productGroup = null, $inactive = 1, $companyId=1)
+    public function getProductPrices($productId, $productGroup = null, $inactive = 1, $companyId = 1)
     {
         $request = new Request([
             'PRODUCT_PRICE_GET',
@@ -255,7 +255,27 @@ class CollmexManager
         return $response->getObjects();
     }
 
-    private function containsOnlyObjects($data) {
+    public function getVendorAgreement($productId, $validDate, $companyId = 1, $vendorId = null,  $inactive = 1, $changed = 0)
+    {
+        $request = new Request([
+            'VENDOR_AGREEMENT_GET',
+            $companyId,
+            $vendorId,
+            $productId,
+            '',
+            $validDate,
+            $inactive,
+            $changed,
+            'eFis'
+        ]);
+
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    private function containsOnlyObjects($data)
+    {
 
         foreach ($data as $element) {
             if (is_object($element)) {
@@ -264,8 +284,6 @@ class CollmexManager
             return false;
         }
     }
-
-
 
 
 }

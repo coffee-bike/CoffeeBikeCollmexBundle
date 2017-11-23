@@ -35,6 +35,8 @@ class Response
             case 'CMXORD-2':
                 $object = new Order();
                 break;
+            case 'CMXVAG':
+                $object = new VendorAgreement();
             case 'NEW_OBJECT_ID';
                 break;
             default:
