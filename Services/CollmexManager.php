@@ -50,9 +50,12 @@ class CollmexManager
         rewind($tmpHandle);
         $responseObjects = array();
         $responseMessages = array();
+        $responseNewObjectIds = array();
         while ($line = fgetcsv($tmpHandle, 0, ';', '"')) {
             if ($line[0] == "MESSAGE") {
                 $responseMessages[] = $line;
+            } elseif ($line[0] == "NEW_OBJECT_ID") {
+                $responseNewObjectIds[] = $line;
             } else {
                 $responseObjects[] = $line;
             }
@@ -81,6 +84,10 @@ class CollmexManager
 
             foreach ($responseObjects as $object) {
                 $response->addObject($object);
+            }
+
+            foreach ($responseNewObjectIds as $newObjectId) {
+                $response->addNewObjectId($newObjectId);
             }
 
             return $response;

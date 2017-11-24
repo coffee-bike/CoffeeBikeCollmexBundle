@@ -13,6 +13,7 @@ class Response
 {
     private $messages = array();
     private $objects = array();
+    private $newObjectIds = array();
 
     public function addObject($aData)
     {
@@ -35,8 +36,10 @@ class Response
             case 'CMXORD-2':
                 $object = new Order();
                 break;
+
             case 'CMXVAG':
                 $object = new VendorAgreement();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
@@ -63,5 +66,15 @@ class Response
     public function getMessages()
     {
         return $this->messages;
+    }
+
+    public function addNewObjectId($newObjectId)
+    {
+        $this->newObjectIds[] = $newObjectId;
+    }
+
+    public function getNewObjectIds()
+    {
+        return $this->newObjectIds;
     }
 }
