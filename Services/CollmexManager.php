@@ -255,6 +255,28 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getOrder($orderId, $companyId = 1)
+    {
+        $request = new Request([
+            'SALES_ORDER_GET',
+            $orderId,
+            $companyId,
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            'eFIS',
+            '',
+            '',
+        ]);
+
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getVendorAgreement($productId, $validDate, $companyId = 1, $vendorId = null,  $inactive = 1, $changed = 0)
     {
         $request = new Request([
