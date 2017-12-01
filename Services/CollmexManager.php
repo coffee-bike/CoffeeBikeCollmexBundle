@@ -284,6 +284,17 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getPriceGroups($companyId)
+    {
+        $request = new Request([
+            'PRICE_GROUPS_GET',
+            $companyId,
+        ]);
+
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
     public function getVendorAgreement($productId, $validDate, $companyId = 1, $vendorId = null,  $inactive = 1, $changed = 0)
     {
         $request = new Request([
