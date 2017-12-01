@@ -284,7 +284,7 @@ class CollmexManager
         return $response->getObjects();
     }
 
-    public function getPriceGroups($companyId)
+    public function getPriceGroups($companyId = 1)
     {
         $request = new Request([
             'PRICE_GROUPS_GET',
