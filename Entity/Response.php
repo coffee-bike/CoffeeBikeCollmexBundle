@@ -36,6 +36,9 @@ class Response
             case 'CMXORD-2':
                 $object = new Order();
                 break;
+            case 'PRICE_GROUP':
+                $object = new PriceGroup();
+                break;
             case 'CMXVAG':
                 $object = new VendorAgreement();
                 break;
