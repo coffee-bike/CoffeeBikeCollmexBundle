@@ -343,6 +343,27 @@ class CollmexManager
 
         return $response->getObjects();
     }
+
+    public function getCheckBalance($company_id = null, $financial_year = null, $date_until = null, $bank_account_number = null, $bank_account_group = null,
+                                    $customer_id = null, $supplier_id = null, $cost_location = null)
+    {
+        $request = new Request([
+            'ACCBAL_GET',
+            $company_id,
+            $financial_year,
+            $date_until,
+            $bank_account_number,
+            $bank_account_group,
+            $customer_id,
+            $supplier_id,
+            $cost_location
+
+        ]);
+
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
     private function containsOnlyObjects($data)
     {
 

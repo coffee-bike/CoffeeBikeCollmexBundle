@@ -45,6 +45,9 @@ class Response
             case 'ACCDOC':
                 $object = new AccountingTransaction();
                 break;
+            case 'ACCBAL':
+                $object = new CheckBalance();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
