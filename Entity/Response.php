@@ -42,6 +42,9 @@ class Response
             case 'CMXVAG':
                 $object = new VendorAgreement();
                 break;
+            case 'ACCDOC':
+                $object = new AccountingTransaction();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:

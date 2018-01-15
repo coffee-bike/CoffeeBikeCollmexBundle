@@ -314,6 +314,35 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getAccountingTransactions($transaction_id = null, $company_id = 1, $financial_year = null, $bank_account_number = null,
+                                              $cost_location = null, $customer_id = null, $supplier_id = null, $annex_id = null, $bill_id = null,
+                                              $travel_id = null, $text = null, $slip_date_from = null, $slip_date_to = null, $cancellations = null,
+                                              $changes = null, $system_name = null)
+    {
+        $request = new Request([
+            'ACCDOC_GET',
+            $transaction_id,
+            $company_id,
+            $financial_year,
+            $bank_account_number,
+            $cost_location,
+            $customer_id,
+            $supplier_id,
+            $annex_id,
+            $bill_id,
+            $travel_id,
+            $text,
+            $slip_date_from,
+            $slip_date_to,
+            $cancellations,
+            $changes,
+            $system_name
+        ]);
+
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
     private function containsOnlyObjects($data)
     {
 
