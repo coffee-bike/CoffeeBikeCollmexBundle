@@ -395,6 +395,23 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getStockChange($company_id = null, $product_id = null, $date_from = null, $date_until = null, $customer_id = null,
+                                   $supplier_id = null, $cancellations = null, $changes_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'STOCK_CHANGE_GET',
+            $company_id,
+            $product_id,
+            $date_from,
+            $date_until,
+            $customer_id,
+            $supplier_id,
+            $cancellations,
+            $changes_only,
+            $system_name
+        ]);
+    }
+
     private function containsOnlyObjects($data)
     {
 

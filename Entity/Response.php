@@ -54,6 +54,9 @@ class Response
             case 'CMXSTK':
                 $object = new Stock();
                 break;
+            case 'STOCK_CHANGE':
+                $object = new StockChange();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
