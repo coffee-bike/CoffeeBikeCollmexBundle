@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="cm_stock_change")
  */
-class StockChange
+class StockChange extends CollmexObject
 {
     /**
      * @ORM\Id

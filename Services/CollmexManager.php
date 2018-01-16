@@ -410,6 +410,25 @@ class CollmexManager
             $changes_only,
             $system_name
         ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getBatch($company_id = null, $batch_id = null, $product_id = null, $text = null, $changes_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'BATCH_GET',
+            $company_id,
+            $batch_id,
+            $product_id,
+            $text,
+            $changes_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
     }
 
     private function containsOnlyObjects($data)
