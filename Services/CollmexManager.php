@@ -380,6 +380,21 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getStock($company_id = null, $product_id = null, $product_group = null, $text = null, $type = null)
+    {
+        $request = new Request([
+            'STOCK_GET',
+            $company_id,
+            $product_id,
+            $product_group,
+            $text,
+            $type
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     private function containsOnlyObjects($data)
     {
 

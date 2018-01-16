@@ -48,8 +48,11 @@ class Response
             case 'ACCBAL':
                 $object = new CheckBalance();
                 break;
-            case 'INVOICE_PAYMENT';
+            case 'INVOICE_PAYMENT':
                 $object = new InvoicePayment();
+                break;
+            case 'CMXSTK':
+                $object = new Stock();
                 break;
             case 'NEW_OBJECT_ID';
                 break;
