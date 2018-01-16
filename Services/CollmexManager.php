@@ -364,6 +364,22 @@ class CollmexManager
 
         return $response->getObjects();
     }
+
+    public function getInvoicePayment($company_id = null, $bill_id = null, $new_payments = null, $system_name = null)
+    {
+        $request = new Request([
+            'INVOICE_PAYMENT_GET',
+            $company_id,
+            $bill_id,
+            $new_payments,
+            $system_name
+
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     private function containsOnlyObjects($data)
     {
 

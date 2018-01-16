@@ -48,6 +48,9 @@ class Response
             case 'ACCBAL':
                 $object = new CheckBalance();
                 break;
+            case 'INVOICE_PAYMENT';
+                $object = new InvoicePayment();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
