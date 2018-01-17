@@ -69,6 +69,9 @@ class Response
             case 'CMXPOD':
                 $object = new PurchaseOrder();
                 break;
+            case 'CMXKND':
+                $object = new Customer();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:

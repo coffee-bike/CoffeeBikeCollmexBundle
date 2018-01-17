@@ -493,6 +493,30 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getCustomer($customer_id = null, $company_id = null, $text = null, $due_resubmission = null, $postal_code_land = null,
+                                $address_group = null, $price_group = null, $discount_group = null, $intermediary = null, $changed_only = null,
+                                 $system_name = 'efis', $inactive = null)
+    {
+        $request = new Request([
+            'CUSTOMER_GET',
+            $customer_id,
+            $company_id,
+            $text,
+            $due_resubmission,
+            $postal_code_land,
+            $address_group,
+            $price_group,
+            $discount_group,
+            $intermediary,
+            $changed_only,
+            $system_name,
+            $inactive
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     private function containsOnlyObjects($data)
     {
 
