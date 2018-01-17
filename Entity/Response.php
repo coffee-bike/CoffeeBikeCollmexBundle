@@ -60,6 +60,9 @@ class Response
             case 'CMXBTC':
                 $object = new Batch();
                 break;
+            case 'CMXQTN':
+                $object = new Quotation();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:

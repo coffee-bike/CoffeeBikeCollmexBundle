@@ -431,6 +431,26 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getQuotation($offer_id = null, $company_id = null, $customer_id = null, $offer_date_from = null, $offer_id_until = null,
+                                    $dont_use_letter_paper = null, $return_format = null, $changes_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+           'QUOTATION_GET',
+            $offer_id,
+            $company_id,
+            $customer_id,
+            $offer_date_from,
+            $offer_id_until,
+            $dont_use_letter_paper,
+            $return_format,
+            $changes_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     private function containsOnlyObjects($data)
     {
 
