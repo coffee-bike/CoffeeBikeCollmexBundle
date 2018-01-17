@@ -472,6 +472,27 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getPurchaseOrder($supplier_order_id = null, $company_id = null, $supplier_id = null, $product_id = null,
+                                     $handed_out_only = null, $return_format = null, $changed_only = null, $system_name = 'efis',
+                                     $dont_use_letter_paper = null)
+    {
+        $request = new Request([
+            'PURCHASE_ORDER_GET',
+            $supplier_order_id,
+            $company_id,
+            $supplier_id,
+            $product_id,
+            $handed_out_only,
+            $return_format,
+            $changed_only,
+            $system_name,
+            $dont_use_letter_paper
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     private function containsOnlyObjects($data)
     {
 

@@ -66,6 +66,9 @@ class Response
             case 'CMXDLV':
                 $object = new Delivery();
                 break;
+            case 'CMXPOD':
+                $object = new PurchaseOrder();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
