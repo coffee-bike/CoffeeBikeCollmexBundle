@@ -63,6 +63,9 @@ class Response
             case 'CMXQTN':
                 $object = new Quotation();
                 break;
+            case 'CMXDLV':
+                $object = new Delivery();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:

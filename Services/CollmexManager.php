@@ -451,6 +451,27 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getDelivery($delivery_id = null, $company_id = null, $customer_id = null, $delivery_date_from = null,
+                                $delivery_date_until = null, $changed_only = null, $system_name = 'efis', $dont_use_letter_paper = null,
+                                $customer_order_id = null)
+    {
+        $request = new Request([
+            'DELIVERY_GET',
+            $delivery_id,
+            $company_id,
+            $customer_id,
+            $delivery_date_from,
+            $delivery_date_until,
+            $changed_only,
+            $system_name,
+            $dont_use_letter_paper,
+            $customer_order_id
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     private function containsOnlyObjects($data)
     {
 
