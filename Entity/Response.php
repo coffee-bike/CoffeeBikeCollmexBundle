@@ -72,6 +72,10 @@ class Response
             case 'CMXKND':
                 $object = new Customer();
                 break;
+                break;
+            case 'CMXABO':
+                $object = new Abo();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
