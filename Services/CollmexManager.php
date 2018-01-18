@@ -672,6 +672,23 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getBillOfMaterial($company_id = null, $product_id = null, $use = null, $component_product_id = null,
+                                        $changed_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'BILL_OF_MATERIAL_GET',
+            $company_id,
+            $product_id,
+            $use,
+            $component_product_id,
+            $changed_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getSearchEngineProducts($website_id = null, $export_format = null)
     {
         $request = new Request([

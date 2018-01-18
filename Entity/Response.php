@@ -102,6 +102,9 @@ class Response
             case 'PRODUCTION_ORDER':
                 $object = new ProductionOrder();
                 break;
+            case 'CMXBOM':
+                $object = new BillOfMaterial();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:

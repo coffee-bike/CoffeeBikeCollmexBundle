@@ -8,7 +8,7 @@
 
 namespace CoffeeBike\CollmexBundle\Entity;
 
-namespace CoffeeBike\CollmexBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Activities

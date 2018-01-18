@@ -8,6 +8,8 @@
 
 namespace CoffeeBike\CollmexBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Class Project
  * @package CoffeeBike\CollmexBundle\Entity

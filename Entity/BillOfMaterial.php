@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: bike
  * Date: 18.01.18
- * Time: 13:57
+ * Time: 15:38
  */
 
 namespace CoffeeBike\CollmexBundle\Entity;
@@ -11,12 +11,12 @@ namespace CoffeeBike\CollmexBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class ProductionOrder
+ * Class PBillOfMaterial
  * @package CoffeeBike\CollmexBundle\Entity
  * @ORM\Entity
- * @ORM\Table(name="cm_production_order")
+ * @ORM\Table(name="cm_bill_of_material")
  */
-class ProductionOrder extends CollmexObject
+class BillOfMaterial extends CollmexObject
 {
     /**
      * @ORM\Id
@@ -27,19 +27,7 @@ class ProductionOrder extends CollmexObject
     /**
      * @ORM\Column(type="string")
      */
-    protected $type_identifier = 'PROJECT_STAFF';
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $production_order_id;
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $component_id;
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $company_id;
+    protected $type_identifier = 'CMXBOM';
     /**
      * @ORM\Column(type="string")
      */
@@ -47,27 +35,19 @@ class ProductionOrder extends CollmexObject
     /**
      * @ORM\Column(type="string")
      */
-    protected $quantity;
+    protected $company_id;
     /**
      * @ORM\Column(type="string")
      */
-    protected $starting_date;
+    protected $version;
     /**
      * @ORM\Column(type="string")
      */
-    protected $ending_date;
+    protected $use;
     /**
      * @ORM\Column(type="string")
      */
-    protected $duration;
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $released;
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $completed;
+    protected $valid_from;
     /**
      * @ORM\Column(type="string")
      */
@@ -75,7 +55,7 @@ class ProductionOrder extends CollmexObject
     /**
      * @ORM\Column(type="string")
      */
-    protected $version_of_component_list;
+    protected $position_id;
     /**
      * @ORM\Column(type="string")
      */
@@ -83,9 +63,9 @@ class ProductionOrder extends CollmexObject
     /**
      * @ORM\Column(type="string")
      */
-    protected $required_quantity;
+    protected $quantity;
     /**
      * @ORM\Column(type="string")
      */
-    protected $position_id_of_component_list;
+    protected $reference_quantity;
 }
