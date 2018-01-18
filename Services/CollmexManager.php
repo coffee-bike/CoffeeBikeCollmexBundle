@@ -720,6 +720,28 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getSalesOrderBacklog($company_id = null, $customer_id = null, $product_id = null, $product_group = null,
+                                            $intermediary = null, $address_group = null, $order_date_from = null, $order_date_until = null,
+                                            $delivery_date_from = null, $delivery_date_until = null)
+    {
+        $request = new Request([
+            'SALES_ORDER_BACKLOG_GET',
+            $company_id,
+            $customer_id,
+            $product_id,
+            $product_group,
+            $intermediary,
+            $address_group,
+            $order_date_from,
+            $order_date_until,
+            $delivery_date_from,
+            $delivery_date_until
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getAddressGroup()
     {
         $request = new Request([

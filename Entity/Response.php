@@ -108,6 +108,9 @@ class Response
             case 'VOUCHER':
                 $object = new Voucher();
                 break;
+            case 'SALES_ORDER_BACKLOG':
+                $object = new SalesOrderBacklog();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
