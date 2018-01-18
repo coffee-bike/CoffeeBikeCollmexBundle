@@ -87,6 +87,9 @@ class Response
             case 'CMXKNT':
                 $object = new Contacts();
                 break;
+            case 'ADRGRP':
+                $object = new AddressGroup();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:

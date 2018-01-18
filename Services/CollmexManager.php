@@ -606,6 +606,16 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getAddressGroup()
+    {
+        $request = new Request([
+            'ADDRESS_GROUP_GET'
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     private function containsOnlyObjects($data)
     {
 
