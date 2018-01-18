@@ -653,6 +653,25 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getProductionOrder($production_order_id = null, $location_id = null, $product_id = null, $component = null,
+                                        $open = null, $date = null, $changed_only = null, $system_name = null)
+    {
+        $request = new Request([
+            'PRODUCTION_ORDER_GET',
+            $production_order_id,
+            $location_id,
+            $product_id,
+            $component,
+            $open,
+            $date,
+            $changed_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getAddressGroup()
     {
         $request = new Request([

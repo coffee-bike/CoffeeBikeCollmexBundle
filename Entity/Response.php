@@ -99,6 +99,9 @@ class Response
             case 'PROJECT_STAFF':
                 $object = new ProjectStaff();
                 break;
+            case 'PRODUCTION_ORDER':
+                $object = new ProductionOrder();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
