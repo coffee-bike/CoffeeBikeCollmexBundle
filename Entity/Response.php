@@ -76,6 +76,9 @@ class Response
             case 'CMXABO':
                 $object = new Abo();
                 break;
+            case 'CMXCAG':
+                $object = new CustomerAgreement();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:

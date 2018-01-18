@@ -517,6 +517,24 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getCustomerAgreement($company_id = null, $customer_id = null, $product_id = null, $validity_date = null,
+                                         $inactive = null, $changes_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'CUSTOMER_AGREEMENT_GET',
+            $company_id,
+            $customer_id,
+            $product_id,
+            $validity_date,
+            $inactive,
+            $changes_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getAbo($customer_id = null, $company_id = null, $product_id = null, $next_bill_from = null, $next_bill_until = null,
                             $valid_from = null, $changed_only = null, $system_name = 'efis')
     {
