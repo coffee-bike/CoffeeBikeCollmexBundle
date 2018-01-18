@@ -79,6 +79,9 @@ class Response
             case 'CMXCAG':
                 $object = new CustomerAgreement();
                 break;
+            case 'CMXLIF':
+                $object = new Vendor();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
