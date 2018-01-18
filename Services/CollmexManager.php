@@ -689,6 +689,25 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getVoucher($voucher_id = null, $company_id = null, $redeemed_from = null, $intermediary = null,
+                                $discount_reason = null, $also_expired = null, $changed_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'VOUCHER_GET',
+            $voucher_id,
+            $company_id,
+            $redeemed_from,
+            $intermediary,
+            $discount_reason,
+            $also_expired,
+            $changed_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getSearchEngineProducts($website_id = null, $export_format = null)
     {
         $request = new Request([

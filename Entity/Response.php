@@ -105,6 +105,9 @@ class Response
             case 'CMXBOM':
                 $object = new BillOfMaterial();
                 break;
+            case 'VOUCHER':
+                $object = new Voucher();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
