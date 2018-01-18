@@ -84,6 +84,9 @@ class Response
             case 'CMXADR':
                 $object = new Address();
                 break;
+            case 'CMXKNT':
+                $object = new Contacts();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:

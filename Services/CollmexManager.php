@@ -593,6 +593,19 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getContacts($address_id = null, $address_type = null, $text = null)
+    {
+        $request = new Request([
+            'CONTACTS_GET',
+            $address_id,
+            $address_type,
+            $text
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     private function containsOnlyObjects($data)
     {
 
