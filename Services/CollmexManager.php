@@ -606,6 +606,20 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getProject($project_id = null, $company_id = null, $customer_id = null, $status = null)
+    {
+        $request = new Request([
+            'PROJECT_GET',
+            $project_id,
+            $company_id,
+            $customer_id,
+            $status
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getAddressGroup()
     {
         $request = new Request([

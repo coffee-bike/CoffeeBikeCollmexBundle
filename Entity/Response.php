@@ -90,6 +90,9 @@ class Response
             case 'ADRGRP':
                 $object = new AddressGroup();
                 break;
+            case 'CMXPRJ':
+                $object = new Project();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
