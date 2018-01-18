@@ -93,6 +93,9 @@ class Response
             case 'CMXPRJ':
                 $object = new Project();
                 break;
+            case 'CMXACT':
+                $object = new Activities();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:

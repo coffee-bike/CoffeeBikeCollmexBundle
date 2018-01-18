@@ -620,6 +620,28 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getActivities($project_id = null, $company_id = null, $employee_id = null, $date_from = null, $date_until = null,
+                                    $not_calculated = null, $invoice_relevant = null, $no_internal_activities = null, $changes_only = null,
+                                    $system_name = 'efis')
+    {
+        $request = new Request([
+            'ACTIVITIES_GET',
+            $project_id,
+            $company_id,
+            $employee_id,
+            $date_from,
+            $date_until,
+            $not_calculated,
+            $invoice_relevant,
+            $no_internal_activities,
+            $changes_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getAddressGroup()
     {
         $request = new Request([
