@@ -620,6 +620,17 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getProjectStaff($project_id = null)
+    {
+        $request = new Request([
+            'PROJECT_STAFF_GET',
+            $project_id
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getActivities($project_id = null, $company_id = null, $employee_id = null, $date_from = null, $date_until = null,
                                     $not_calculated = null, $invoice_relevant = null, $no_internal_activities = null, $changes_only = null,
                                     $system_name = 'efis')
