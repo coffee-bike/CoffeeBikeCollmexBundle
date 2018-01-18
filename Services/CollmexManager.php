@@ -672,6 +672,18 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getSearchEngineProducts($website_id = null, $export_format = null)
+    {
+        $request = new Request([
+            'SEARCH_ENGINE_PRODUCTS_GET',
+            $website_id,
+            $export_format
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     public function getAddressGroup()
     {
         $request = new Request([
