@@ -72,7 +72,6 @@ class Response
             case 'CMXKND':
                 $object = new Customer();
                 break;
-                break;
             case 'CMXABO':
                 $object = new Abo();
                 break;
@@ -81,6 +80,9 @@ class Response
                 break;
             case 'CMXLIF':
                 $object = new Vendor();
+                break;
+            case 'CMXADR':
+                $object = new Address();
                 break;
             case 'NEW_OBJECT_ID';
                 break;

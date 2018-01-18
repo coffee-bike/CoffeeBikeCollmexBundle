@@ -8,8 +8,15 @@
 
 namespace CoffeeBike\CollmexBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 
-class Vendor
+/**
+ * Class Vendor
+ * @package CoffeeBike\CollmexBundle\Entity
+ * @ORM\Entity
+ * @ORM\Table(name="cm_vendor")
+ */
+class Vendor extends CollmexObject
 {
     /**
      * @ORM\Id

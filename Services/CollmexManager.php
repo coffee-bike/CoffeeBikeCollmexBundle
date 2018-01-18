@@ -572,6 +572,27 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getAddress($address_id = null, $address_type = null, $text = null, $due_resubmission = null, $postal_code_country = null,
+                                $address_group = null, $changes_only = null, $system_name = 'efis', $contact_person = null, $company_id = null)
+    {
+        $request = new Request([
+            'ADDRESS_GET',
+            $address_id,
+            $address_type,
+            $text,
+            $due_resubmission,
+            $postal_code_country,
+            $address_group,
+            $changes_only,
+            $system_name,
+            $contact_person,
+            $company_id
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     private function containsOnlyObjects($data)
     {
 
