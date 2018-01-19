@@ -129,6 +129,9 @@ class Response
             case 'CMXPRL':
                 $object = new Payroll();
                 break;
+            case 'TRACKING_NUMBER':
+                $object = new ShipmentNumber();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
