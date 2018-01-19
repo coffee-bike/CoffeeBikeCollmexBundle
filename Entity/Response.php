@@ -117,6 +117,9 @@ class Response
             case 'CMXUSM':
                 $object = new Profits();
                 break;
+            case 'CMXLRN':
+                $object = new Supplier();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
