@@ -742,7 +742,7 @@ class CollmexManager
         return $response->getObjects();
     }
 
-    public function getPriceChange($product_id = null, $company_id = null, $price_group = null, $valid_from = null,
+    public function setPriceChange($product_id = null, $company_id = null, $price_group = null, $valid_from = null,
                                      $valid_until = null, $price = null)
     {
         $request = new Request([
@@ -758,6 +758,8 @@ class CollmexManager
 
         return $response->getObjects();
     }
+
+
 
     public function getAddressGroup()
     {
