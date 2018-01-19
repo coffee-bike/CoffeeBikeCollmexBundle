@@ -114,6 +114,9 @@ class Response
             case 'CMXASP':
                 $object = new ContactPerson();
                 break;
+            case 'CMXUSM':
+                $object = new Profits();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
