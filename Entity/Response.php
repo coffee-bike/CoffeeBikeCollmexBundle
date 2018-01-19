@@ -132,6 +132,9 @@ class Response
             case 'TRACKING_NUMBER':
                 $object = new ShipmentNumber();
                 break;
+            case 'PAYMENT_CONFIRMATION':
+                $object = new PaymentConfirmation();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
