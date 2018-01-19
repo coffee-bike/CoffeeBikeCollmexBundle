@@ -759,8 +759,6 @@ class CollmexManager
         return $response->getObjects();
     }
 
-
-
     public function getAddressGroup()
     {
         $request = new Request([
