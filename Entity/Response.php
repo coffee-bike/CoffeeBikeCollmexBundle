@@ -126,6 +126,9 @@ class Response
             case 'CMXSBI':
                 $object = new SupplierCreditNote();
                 break;
+            case 'CMXPRL':
+                $object = new Payroll();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
