@@ -11,10 +11,10 @@ namespace CoffeeBike\CollmexBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Profits
+ * Class Supplier
  * @package CoffeeBike\CollmexBundle\Entity
  * @ORM\Entity
- * @ORM\Table(name="cm_profits")
+ * @ORM\Table(name="cm_supplier")
  */
 class Supplier extends CollmexObject
 {

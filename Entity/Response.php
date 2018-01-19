@@ -120,6 +120,9 @@ class Response
             case 'CMXLRN':
                 $object = new Supplier();
                 break;
+            case 'INVOICE_OUTPUT_SET':
+                $object = new InvoiceOutput();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
