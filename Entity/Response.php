@@ -135,6 +135,9 @@ class Response
             case 'PAYMENT_CONFIRMATION':
                 $object = new PaymentConfirmation();
                 break;
+            case 'CMXEPF':
+                $object = new DifferentReceivingAddress();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
