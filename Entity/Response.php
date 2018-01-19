@@ -111,6 +111,9 @@ class Response
             case 'SALES_ORDER_BACKLOG':
                 $object = new SalesOrderBacklog();
                 break;
+            case 'CMXASP':
+                $object = new ContactPerson();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
