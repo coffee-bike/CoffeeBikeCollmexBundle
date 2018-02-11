@@ -314,6 +314,461 @@ class CollmexManager
         return $response->getObjects();
     }
 
+    public function getAccountingTransactions($transaction_id = null, $company_id = 1, $financial_year = null, $bank_account_number = null,
+                                              $cost_location = null, $customer_id = null, $supplier_id = null, $annex_id = null, $bill_id = null,
+                                              $travel_id = null, $text = null, $slip_date_from = null, $slip_date_to = null, $cancellations = null,
+                                              $changes = null, $system_name = null)
+    {
+        $request = new Request([
+            'ACCDOC_GET',
+            $transaction_id,
+            $company_id,
+            $financial_year,
+            $bank_account_number,
+            $cost_location,
+            $customer_id,
+            $supplier_id,
+            $annex_id,
+            $bill_id,
+            $travel_id,
+            $text,
+            $slip_date_from,
+            $slip_date_to,
+            $cancellations,
+            $changes,
+            $system_name
+        ]);
+
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getCheckBalance($company_id = null, $financial_year = null, $date_until = null, $bank_account_number = null, $bank_account_group = null,
+                                    $customer_id = null, $supplier_id = null, $cost_location = null)
+    {
+        $request = new Request([
+            'ACCBAL_GET',
+            $company_id,
+            $financial_year,
+            $date_until,
+            $bank_account_number,
+            $bank_account_group,
+            $customer_id,
+            $supplier_id,
+            $cost_location
+
+        ]);
+
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getInvoicePayment($company_id = null, $bill_id = null, $new_payments = null, $system_name = null)
+    {
+        $request = new Request([
+            'INVOICE_PAYMENT_GET',
+            $company_id,
+            $bill_id,
+            $new_payments,
+            $system_name
+
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getStock($company_id = null, $product_id = null, $product_group = null, $text = null, $type = null)
+    {
+        $request = new Request([
+            'STOCK_GET',
+            $company_id,
+            $product_id,
+            $product_group,
+            $text,
+            $type
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getStockChange($company_id = null, $product_id = null, $date_from = null, $date_until = null, $customer_id = null,
+                                   $supplier_id = null, $cancellations = null, $changes_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'STOCK_CHANGE_GET',
+            $company_id,
+            $product_id,
+            $date_from,
+            $date_until,
+            $customer_id,
+            $supplier_id,
+            $cancellations,
+            $changes_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getBatch($company_id = null, $batch_id = null, $product_id = null, $text = null, $changes_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'BATCH_GET',
+            $company_id,
+            $batch_id,
+            $product_id,
+            $text,
+            $changes_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getQuotation($offer_id = null, $company_id = null, $customer_id = null, $offer_date_from = null, $offer_id_until = null,
+                                    $dont_use_letter_paper = null, $return_format = null, $changes_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+           'QUOTATION_GET',
+            $offer_id,
+            $company_id,
+            $customer_id,
+            $offer_date_from,
+            $offer_id_until,
+            $dont_use_letter_paper,
+            $return_format,
+            $changes_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getDelivery($delivery_id = null, $company_id = null, $customer_id = null, $delivery_date_from = null,
+                                $delivery_date_until = null, $changed_only = null, $system_name = 'efis', $dont_use_letter_paper = null,
+                                $customer_order_id = null)
+    {
+        $request = new Request([
+            'DELIVERY_GET',
+            $delivery_id,
+            $company_id,
+            $customer_id,
+            $delivery_date_from,
+            $delivery_date_until,
+            $changed_only,
+            $system_name,
+            $dont_use_letter_paper,
+            $customer_order_id
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getPurchaseOrder($supplier_order_id = null, $company_id = null, $supplier_id = null, $product_id = null,
+                                     $handed_out_only = null, $return_format = null, $changed_only = null, $system_name = 'efis',
+                                     $dont_use_letter_paper = null)
+    {
+        $request = new Request([
+            'PURCHASE_ORDER_GET',
+            $supplier_order_id,
+            $company_id,
+            $supplier_id,
+            $product_id,
+            $handed_out_only,
+            $return_format,
+            $changed_only,
+            $system_name,
+            $dont_use_letter_paper
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getCustomer($customer_id = null, $company_id = null, $text = null, $due_resubmission = null, $postal_code_land = null,
+                                $address_group = null, $price_group = null, $discount_group = null, $intermediary = null, $changed_only = null,
+                                 $system_name = 'efis', $inactive = null)
+    {
+        $request = new Request([
+            'CUSTOMER_GET',
+            $customer_id,
+            $company_id,
+            $text,
+            $due_resubmission,
+            $postal_code_land,
+            $address_group,
+            $price_group,
+            $discount_group,
+            $intermediary,
+            $changed_only,
+            $system_name,
+            $inactive
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getCustomerAgreement($company_id = null, $customer_id = null, $product_id = null, $validity_date = null,
+                                         $inactive = null, $changes_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'CUSTOMER_AGREEMENT_GET',
+            $company_id,
+            $customer_id,
+            $product_id,
+            $validity_date,
+            $inactive,
+            $changes_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getVendor($supplier_id = null, $company_id = null, $text = null, $due_resubmission = null, $postal_code_country = null,
+                                $changes_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'VENDOR_GET',
+            $supplier_id,
+            $company_id,
+            $text,
+            $due_resubmission,
+            $postal_code_country,
+            $changes_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getAbo($customer_id = null, $company_id = null, $product_id = null, $next_bill_from = null, $next_bill_until = null,
+                            $valid_from = null, $changed_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'ABO_GET',
+            $customer_id,
+            $company_id,
+            $product_id,
+            $next_bill_from,
+            $next_bill_until,
+            $valid_from,
+            $changed_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getAddress($address_id = null, $address_type = null, $text = null, $due_resubmission = null, $postal_code_country = null,
+                                $address_group = null, $changes_only = null, $system_name = 'efis', $contact_person = null, $company_id = null)
+    {
+        $request = new Request([
+            'ADDRESS_GET',
+            $address_id,
+            $address_type,
+            $text,
+            $due_resubmission,
+            $postal_code_country,
+            $address_group,
+            $changes_only,
+            $system_name,
+            $contact_person,
+            $company_id
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getContacts($address_id = null, $address_type = null, $text = null)
+    {
+        $request = new Request([
+            'CONTACTS_GET',
+            $address_id,
+            $address_type,
+            $text
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getProject($project_id = null, $company_id = null, $customer_id = null, $status = null)
+    {
+        $request = new Request([
+            'PROJECT_GET',
+            $project_id,
+            $company_id,
+            $customer_id,
+            $status
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getProjectStaff($project_id = null)
+    {
+        $request = new Request([
+            'PROJECT_STAFF_GET',
+            $project_id
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getActivities($project_id = null, $company_id = null, $employee_id = null, $date_from = null, $date_until = null,
+                                    $not_calculated = null, $invoice_relevant = null, $no_internal_activities = null, $changes_only = null,
+                                    $system_name = 'efis')
+    {
+        $request = new Request([
+            'ACTIVITIES_GET',
+            $project_id,
+            $company_id,
+            $employee_id,
+            $date_from,
+            $date_until,
+            $not_calculated,
+            $invoice_relevant,
+            $no_internal_activities,
+            $changes_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getProductionOrder($production_order_id = null, $location_id = null, $product_id = null, $component = null,
+                                        $open = null, $date = null, $changed_only = null, $system_name = null)
+    {
+        $request = new Request([
+            'PRODUCTION_ORDER_GET',
+            $production_order_id,
+            $location_id,
+            $product_id,
+            $component,
+            $open,
+            $date,
+            $changed_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getBillOfMaterial($company_id = null, $product_id = null, $use = null, $component_product_id = null,
+                                        $changed_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'BILL_OF_MATERIAL_GET',
+            $company_id,
+            $product_id,
+            $use,
+            $component_product_id,
+            $changed_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getVoucher($voucher_id = null, $company_id = null, $redeemed_from = null, $intermediary = null,
+                                $discount_reason = null, $also_expired = null, $changed_only = null, $system_name = 'efis')
+    {
+        $request = new Request([
+            'VOUCHER_GET',
+            $voucher_id,
+            $company_id,
+            $redeemed_from,
+            $intermediary,
+            $discount_reason,
+            $also_expired,
+            $changed_only,
+            $system_name
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getSearchEngineProducts($website_id = null, $export_format = null)
+    {
+        $request = new Request([
+            'SEARCH_ENGINE_PRODUCTS_GET',
+            $website_id,
+            $export_format
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getSalesOrderBacklog($company_id = null, $customer_id = null, $product_id = null, $product_group = null,
+                                            $intermediary = null, $address_group = null, $order_date_from = null, $order_date_until = null,
+                                            $delivery_date_from = null, $delivery_date_until = null)
+    {
+        $request = new Request([
+            'SALES_ORDER_BACKLOG_GET',
+            $company_id,
+            $customer_id,
+            $product_id,
+            $product_group,
+            $intermediary,
+            $address_group,
+            $order_date_from,
+            $order_date_until,
+            $delivery_date_from,
+            $delivery_date_until
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function setPriceChange($product_id = null, $company_id = null, $price_group = null, $valid_from = null,
+                                     $valid_until = null, $price = null)
+    {
+        $request = new Request([
+            'CMXPRI_CHANGE',
+            $product_id,
+            $company_id,
+            $price_group,
+            $valid_from,
+            $valid_until,
+            $price
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
+    public function getAddressGroup()
+    {
+        $request = new Request([
+            'ADDRESS_GROUP_GET'
+        ]);
+        $response = $this->send($request);
+
+        return $response->getObjects();
+    }
+
     private function containsOnlyObjects($data)
     {
 

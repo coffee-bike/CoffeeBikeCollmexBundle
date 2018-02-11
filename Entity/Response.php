@@ -42,6 +42,102 @@ class Response
             case 'CMXVAG':
                 $object = new VendorAgreement();
                 break;
+            case 'ACCDOC':
+                $object = new AccountingTransaction();
+                break;
+            case 'ACCBAL':
+                $object = new CheckBalance();
+                break;
+            case 'INVOICE_PAYMENT':
+                $object = new InvoicePayment();
+                break;
+            case 'CMXSTK':
+                $object = new Stock();
+                break;
+            case 'STOCK_CHANGE':
+                $object = new StockChange();
+                break;
+            case 'CMXBTC':
+                $object = new Batch();
+                break;
+            case 'CMXQTN':
+                $object = new Quotation();
+                break;
+            case 'CMXDLV':
+                $object = new Delivery();
+                break;
+            case 'CMXPOD':
+                $object = new PurchaseOrder();
+                break;
+            case 'CMXKND':
+                $object = new Customer();
+                break;
+            case 'CMXABO':
+                $object = new Abo();
+                break;
+            case 'CMXCAG':
+                $object = new CustomerAgreement();
+                break;
+            case 'CMXLIF':
+                $object = new Vendor();
+                break;
+            case 'CMXADR':
+                $object = new Address();
+                break;
+            case 'CMXKNT':
+                $object = new Contacts();
+                break;
+            case 'ADRGRP':
+                $object = new AddressGroup();
+                break;
+            case 'CMXPRJ':
+                $object = new Project();
+                break;
+            case 'CMXACT':
+                $object = new Activities();
+                break;
+            case 'PROJECT_STAFF':
+                $object = new ProjectStaff();
+                break;
+            case 'PRODUCTION_ORDER':
+                $object = new ProductionOrder();
+                break;
+            case 'CMXBOM':
+                $object = new BillOfMaterial();
+                break;
+            case 'VOUCHER':
+                $object = new Voucher();
+                break;
+            case 'SALES_ORDER_BACKLOG':
+                $object = new SalesOrderBacklog();
+                break;
+            case 'CMXASP':
+                $object = new ContactPerson();
+                break;
+            case 'CMXUSM':
+                $object = new Profits();
+                break;
+            case 'CMXLRN':
+                $object = new Supplier();
+                break;
+            case 'INVOICE_OUTPUT_SET':
+                $object = new InvoiceOutput();
+                break;
+            case 'CMXSBI':
+                $object = new SupplierCreditNote();
+                break;
+            case 'CMXPRL':
+                $object = new Payroll();
+                break;
+            case 'TRACKING_NUMBER':
+                $object = new ShipmentNumber();
+                break;
+            case 'PAYMENT_CONFIRMATION':
+                $object = new PaymentConfirmation();
+                break;
+            case 'CMXEPF':
+                $object = new DifferentReceivingAddress();
+                break;
             case 'NEW_OBJECT_ID';
                 break;
             default:
