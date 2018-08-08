@@ -786,7 +786,7 @@ class CollmexManager
     public function getAddressGroup()
     {
         $request = new Request([
-            'ADDRESS_GROUP_GET'
+            'ADDRESS_GROUPS_GET'
         ]);
         $response = $this->send($request);
 
