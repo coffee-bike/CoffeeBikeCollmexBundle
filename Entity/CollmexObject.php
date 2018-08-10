@@ -30,7 +30,7 @@ class CollmexObject
         $i = 0;
         foreach ($this as $key => $value) {
             if ($key != 'extraInfo' && $key != 'id') {
-                $this->$key = preg_replace('/^([0-9]{1}[\s]{1})/', '', $aTemplate[$i]);
+                $this->$key = $aTemplate[$i];
                 $i++;
             }
         }
