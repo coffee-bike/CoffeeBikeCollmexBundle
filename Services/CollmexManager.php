@@ -106,19 +106,19 @@ class CollmexManager
             if ($this->containsOnlyObjects($data)) {
                 foreach ($data as $obj) {
                     foreach ($obj->getData() as $field) {
-                        $strCSV .= $field . ";";
+                        $strCSV .= '"' . $field . '"' . ";";
                     }
                     $strCSV .= "\n";
                 }
                 $strCSV = substr($strCSV, 0, -2); // Delete \n from CSV
             } else {
                 foreach ($data as $field) {
-                    $strCSV .= $field . ";";
+                    $strCSV .= '"' . $field . '"' . ";";
                 }
             }
         } else {
             foreach ($data->getData() as $field) {
-                $strCSV .= $field . ";";
+                $strCSV .= '"' . $field . '"' . ";";
             }
         }
 
