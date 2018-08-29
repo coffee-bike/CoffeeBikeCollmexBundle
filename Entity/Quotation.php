@@ -13,8 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Quotation
  * @package CoffeeBike\CollmexBundle\Entity
- * @ORM\Entity
- * @ORM\Table(name="cm_quotation")
  */
 class Quotation extends CollmexObject
 {
