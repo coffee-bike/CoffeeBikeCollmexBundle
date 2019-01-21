@@ -376,7 +376,7 @@ class Invoice extends CollmexObject
 
     public function parseRemark()
     {
-        $remark = $this->getField('remark');
+        $remark = $this->getField('annotation');
         preg_match_all("/(\[)(.*?)(\])/", $remark, $aMatches);
         $array = array();
 
