@@ -29,6 +29,13 @@ class CollmexManager
         $this->credentials['customerId'] = $customerId;
     }
 
+    public function getInvoicePDF($invoiceId)
+    {
+        $file = file_get_contents(sprintf('https://www.collmex.de/cgi-bin/cgi.exe/Rechnung%s.pdf?%s,269974503,ivpr,%s', $invoiceId, $this->credentials['customerId'], $invoiceId));
+
+        return $file;
+    }
+    
     public function send(Request $request)
     {
 
