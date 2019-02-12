@@ -31,11 +31,61 @@ class CollmexManager
 
     public function getInvoicePDF($invoiceId)
     {
-        $file = file_get_contents(sprintf('https://www.collmex.de/cgi-bin/cgi.exe/Rechnung%s.pdf?%s,269974503,ivpr,%s', $invoiceId, $this->credentials['customerId'], $invoiceId));
+        $request = new Request([
+            'INVOICE_GET',
+            $invoiceId,
+            1,
+            null,
+            null,
+            null,
+            null,
+            1,
+            null,
+            'eFIS',
+            null,
+            0,
+        ]);
 
-        return $file;
+        $curl = cURL_init(
+            "https://www.collmex.de/cgi-bin/cgi.exe?" . $this->credentials['customerId'] . ",0,data_exchange"
+        );
+        cURL_setopt($curl, CURLOPT_POST, 1);
+        cURL_setopt($curl, CURLOPT_POSTFIELDS, $this->prepareData($request->getData()));
+        cURL_setopt($curl, CURLOPT_HTTPHEADER, Array("Content-Type: text/csv"));
+        cURL_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        cURL_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $file = curl_exec($curl); //returns true or false
+        cURL_close($curl);
+
+        // Save file and extract zip
+        $dir = 'tmp'.$invoiceId.'/';
+        $filename = $invoiceId.'.zip';
+
+        if (!file_exists($dir)) {
+            mkdir($dir, 0777, true);
+        }
+
+        $fp = fopen($dir.$filename, 'w');
+        fwrite($fp, $file);
+        fclose($fp);
+
+        $zip = new \ZipArchive();
+        $zip->open($dir.$filename);
+        $zip->extractTo($dir.$invoiceId);
+
+        // Load pdf file
+        $pdf = file_get_contents(sprintf('%s%s/Invoice%s.pdf',$dir,$invoiceId,$invoiceId));
+
+        // Remove garbage
+        unlink($dir.$filename);
+        unlink(sprintf('%s%s/Invoice%s.pdf',$dir,$invoiceId,$invoiceId));
+        unlink($dir.$invoiceId.'/result.csv');
+        rmdir($dir.$invoiceId);
+        rmdir($dir);
+
+        return $pdf;
     }
-    
+
     public function send(Request $request)
     {
 
@@ -66,7 +116,6 @@ class CollmexManager
             } else {
                 $responseObjects[] = $line;
             }
-
         }
 
         fclose($tmpHandle);
