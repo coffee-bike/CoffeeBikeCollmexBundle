@@ -385,4 +385,18 @@ class Order extends CollmexObject
      * @ORM\Column(type="string")
      */
     protected $costs_manual;
+    
+    public function parseRemark()
+    {
+        $remark = $this->getField('annotation');
+        preg_match_all("/(\[)(.*?)(\])/", $remark, $aMatches);
+        $array = array();
+
+        foreach ($aMatches[2] as $match) {
+            $parameters = explode('=', $match);
+            $array[$parameters[0]] = $parameters[1];
+        }
+
+        return $array;
+    }
 }
