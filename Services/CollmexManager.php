@@ -10,6 +10,7 @@ use CoffeeBike\CollmexBundle\Entity\ProductGroup;
 use CoffeeBike\CollmexBundle\Entity\ResponseMessage;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 
 
 class CollmexManager
@@ -86,14 +87,14 @@ class CollmexManager
         return $pdf;
     }
 
-    public function send(Request $request)
+    public function send(Request $request, $withEnclosure = true)
     {
 
         $curl = cURL_init(
             "https://www.collmex.de/cgi-bin/cgi.exe?" . $this->credentials['customerId'] . ",0,data_exchange"
         );
         cURL_setopt($curl, CURLOPT_POST, 1);
-        cURL_setopt($curl, CURLOPT_POSTFIELDS, $this->prepareData($request->getData()));
+        cURL_setopt($curl, CURLOPT_POSTFIELDS, $this->prepareData($request->getData(), $withEnclosure));
         cURL_setopt($curl, CURLOPT_HTTPHEADER, Array("Content-Type: text/csv"));
         cURL_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         cURL_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -154,7 +155,16 @@ class CollmexManager
         }
     }
 
-    public function prepareData($data)
+    private function formatCsvString ($field, $withEnclosure = false)
+    {
+        if ($withEnclosure) {
+            return '"' . $field . '"' . ";";
+        }
+
+        return $field . ";";
+    }
+
+    public function prepareData($data, $withEnclosure = true)
     {
         $strCSV = "LOGIN;" . $this->credentials['user'] . ";" . $this->credentials['password'] . "\n";
 
@@ -162,19 +172,19 @@ class CollmexManager
             if ($this->containsOnlyObjects($data)) {
                 foreach ($data as $obj) {
                     foreach ($obj->getData() as $field) {
-                        $strCSV .= '"' . $field . '"' . ";";
+                        $strCSV .= $this->formatCsvString($field, $withEnclosure);
                     }
                     $strCSV .= "\n";
                 }
                 $strCSV = substr($strCSV, 0, -2); // Delete \n from CSV
             } else {
                 foreach ($data as $field) {
-                    $strCSV .= '"' . $field . '"' . ";";
+                    $strCSV .= $this->formatCsvString($field, $withEnclosure);
                 }
             }
         } else {
             foreach ($data->getData() as $field) {
-                $strCSV .= '"' . $field . '"' . ";";
+                $strCSV .= $this->formatCsvString($field, $withEnclosure);
             }
         }
 

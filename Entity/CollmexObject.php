@@ -59,4 +59,9 @@ class CollmexObject
         return $this->$key;
     }
 
+    public function unsetField($key)
+    {
+        unset($this->$key);
+    }
+
 }
