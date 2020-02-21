@@ -262,13 +262,13 @@ class CollmexManager
         return $response->getObjects();
     }
 
-    public function getOrder($orderId, $companyId = 1)
+    public function getOrder($orderId = '', $companyId = 1, $customerId = '')
     {
         $request = new Request([
             'SALES_ORDER_GET',
             $orderId,
             $companyId,
-            '',
+            $customerId,
             '',
             '',
             '',
