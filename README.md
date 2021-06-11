@@ -49,3 +49,14 @@ class AppKernel extends Kernel
     // ...
 }
 ```
+Step 3: Add configuration to config.yml
+-------------------------
+
+Add credentials for Collmex user in `app/config.yml`:
+
+```yaml
+coffee_bike_collmex:
+    user: 'collmex-user'
+    password: '*********'
+    customer_id: '123456'
+```
