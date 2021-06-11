@@ -1,16 +1,15 @@
 <?xml version="1.0" ?>
 
-<container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <services>
-        <service id="coffee_bike_collmex.example" class="CoffeeBike\CollmexBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="coffeebike.collmex.manager" class="CoffeeBike\CollmexBundle\Services\CollmexManager">
+            <tag name="monolog.logger" channel="collmex" />
+            <argument>%coffee_bike_collmex.user%</argument>
+            <argument>%coffee_bike_collmex.password%</argument>
+            <argument>%coffee_bike_collmex.customer_id%</argument>
+            <argument key="$logger" type="service" id="logger" />
         </service>
     </services>
-    -->
 </container>

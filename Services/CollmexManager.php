@@ -8,6 +8,7 @@ use CoffeeBike\CollmexBundle\Entity\Invoice;
 use CoffeeBike\CollmexBundle\Entity\Product;
 use CoffeeBike\CollmexBundle\Entity\ProductGroup;
 use CoffeeBike\CollmexBundle\Entity\ResponseMessage;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 
@@ -21,29 +22,56 @@ class CollmexManager
         "customerId" => null,
     );
 
+    /** @var LoggerInterface|null */
+    private $logger = NULL;
 
-    public function __construct($user, $password, $customerId)
+    public function __construct($user, $password, $customerId, LoggerInterface $logger = NULL)
     {
         $this->credentials['user'] = $user;
         $this->credentials['password'] = $password;
         $this->credentials['customerId'] = $customerId;
+
+        if (NULL !== $logger) {
+            $this->logger = $logger;
+        }
     }
 
     public function send(Request $request)
     {
+        $requestUrl = "https://www.collmex.de/cgi-bin/cgi.exe?" . $this->credentials['customerId'] . ",0,data_exchange";
+        $header = ["Content-Type: text/csv"];
+        $data = $this->prepareData($request->getData());
 
-        $curl = cURL_init(
-            "https://www.collmex.de/cgi-bin/cgi.exe?" . $this->credentials['customerId'] . ",0,data_exchange"
-        );
+        $curl = cURL_init($requestUrl);
         cURL_setopt($curl, CURLOPT_POST, 1);
-        cURL_setopt($curl, CURLOPT_POSTFIELDS, $this->prepareData($request->getData()));
-        cURL_setopt($curl, CURLOPT_HTTPHEADER, Array("Content-Type: text/csv"));
+        cURL_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        cURL_setopt($curl, CURLOPT_HTTPHEADER, $header);
         cURL_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         cURL_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $message = curl_exec($curl); //returns true or false
+        cURL_setopt($curl, CURLOPT_HEADER, 1);
+        $response = curl_exec($curl); //returns true or false
+        $curlInfo = curl_getinfo($curl);
         cURL_close($curl);
 
+        $responseHeaderSize = $curlInfo['header_size'];
+        $responseHeader = substr($response, 0, $responseHeaderSize);
+        $message = substr($response, $responseHeaderSize);
+
         $message = utf8_encode($message);
+
+        if ($this->logger) {
+            $this->logger->info(
+                sprintf(
+                    "New POST request to: %s\nRequest header:\n%s\nRequest body:\n%s\nResponse header:\n%s\nResponse body:\n%s",
+                    $requestUrl,
+                    join("\n", $header),
+                    $data,
+                    trim($responseHeader),
+                    trim($message)
+                )
+            );
+        }
+
         // TODO: Better handling of csv file!
         $tmpHandle = tmpfile();
         fwrite($tmpHandle, $message);

@@ -25,6 +25,8 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('user')->end()
                 ->scalarNode('password')->end()
                 ->scalarNode('customer_id')->end()
+                ->scalarNode('logger')->defaultValue(NULL)->end()
+            ->end()
             ->end()
         ;
 
