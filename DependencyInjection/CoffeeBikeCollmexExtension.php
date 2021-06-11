@@ -24,5 +24,10 @@ class CoffeeBikeCollmexExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $container->setParameter('coffee_bike_collmex.user', $config['user']);
+        $container->setParameter('coffee_bike_collmex.password', $config['password']);
+        $container->setParameter('coffee_bike_collmex.customer_id', $config['customer_id']);
+        $container->setParameter('coffee_bike_collmex.logger', $config['logger']);
     }
 }
